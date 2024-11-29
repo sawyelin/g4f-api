@@ -1,0 +1,15 @@
+{
+  "name": "g4f-api-server",
+  "version": "1.0.0",
+  "description": "API server using G4F to mimic OpenAI API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "body-parser": "^1.19.0",
+    "g4f": "^1.0.0"
+  }
+}
+

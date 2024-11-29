@@ -2,7 +2,6 @@ const g4f = require('g4f');
 
 async function generateResponse(prompt, max_tokens, temperature, model) {
   try {
-    // Map OpenAI model names to G4F providers
     const providerMap = {
       'gpt-3.5-turbo': g4f.Provider.OpenaiChat,
       'gpt-4': g4f.Provider.Bing,

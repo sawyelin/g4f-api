@@ -5,7 +5,14 @@ async function handleCompletions(req, res) {
     const { prompt, max_tokens = 100, temperature = 0.7, model = 'gpt-3.5-turbo' } = req.body;
 
     if (!prompt) {
-      return res.status(400).json({ error: 'Prompt is required' });
+      return res.status(400).json({
+        error: {
+          message: 'Prompt is required',
+          type: 'invalid_request_error',
+          param: 'prompt',
+          code: null
+        }
+      });
     }
 
     const response = await generateResponse(prompt, max_tokens, temperature, model);
@@ -31,7 +38,14 @@ async function handleCompletions(req, res) {
     });
   } catch (error) {
     console.error('Error in completions:', error);
-    res.status(500).json({ error: 'An error occurred while processing your request' });
+    res.status(500).json({
+      error: {
+        message: 'An error occurred during text generation',
+        type: 'text_generation_error',
+        param: null,
+        code: null
+      }
+    });
   }
 }
 
